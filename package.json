@@ -1,7 +1,7 @@
 {
-  "name": "system-fonts-manager",
+  "name": "local-fonts-manager",
   "version": "0.9.0",
-  "description": "Access system fonts from Node.js and Electron",
+  "description": "Access local system fonts from Node.js and Electron",
   "dependencies": {
     "node-addon-api": "4.1.0"
   },
