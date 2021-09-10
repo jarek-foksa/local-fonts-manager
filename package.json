@@ -1,0 +1,17 @@
+{
+  "name": "system-fonts-manager",
+  "version": "0.9.0",
+  "description": "Access system fonts from Node.js and Electron",
+  "dependencies": {
+    "node-addon-api": "4.1.0"
+  },
+  "bundleDependencies": false,
+  "gypfile": true,
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "build": "node-gyp configure && node-gyp build",
+    "rebuild": "node-gyp rebuild",
+    "install": "node-gyp rebuild"
+  }
+}
