@@ -33,21 +33,27 @@ Napi::Array getFontsMetadata(const Napi::CallbackInfo &info) {
         fullName = [[fontFamily stringByAppendingString:@" "] stringByAppendingString:style];
       }
 
-      int nsFontWeight = [[familyMember objectAtIndex:2] intValue];
-      int weight = weightsMap[nsFontWeight];
-      bool italic = [style containsString:@"Italic"];
+      CTFontDescriptorRef fontRef = CTFontDescriptorCreateWithNameAndSize ((CFStringRef)postscriptName, 0.0);
+      CFURLRef url = (CFURLRef)CTFontDescriptorCopyAttribute(fontRef, kCTFontURLAttribute);
+      NSString *fontPath = [NSString stringWithString:[(NSURL *)CFBridgingRelease(url) path]];
 
-      Napi::Object data = Napi::Object::New(env);
-      data.Set("family", std::string([fontFamily UTF8String]));
-      data.Set("postscriptName", std::string([postscriptName UTF8String]));
-      data.Set("style", std::string([style UTF8String]));
-      data.Set("fullName", std::string([fullName UTF8String]));
-      data.Set("weight", weight);
-      data.Set("italic", italic);
-      data.Set("stretch", 1);
+      if ([@[ @"ttf", @"otf", @"ttc", @"dfont"] containsObject:[fontPath pathExtension]]) {
+        int nsFontWeight = [[familyMember objectAtIndex:2] intValue];
+        int weight = weightsMap[nsFontWeight];
+        bool italic = [style containsString:@"Italic"];
 
-      fonts[fontsCounter] = data;
-      fontsCounter += 1;
+        Napi::Object data = Napi::Object::New(env);
+        data.Set("family", std::string([fontFamily UTF8String]));
+        data.Set("postscriptName", std::string([postscriptName UTF8String]));
+        data.Set("style", std::string([style UTF8String]));
+        data.Set("fullName", std::string([fullName UTF8String]));
+        data.Set("weight", weight);
+        data.Set("italic", italic);
+        data.Set("stretch", 1);
+
+        fonts[fontsCounter] = data;
+        fontsCounter += 1;
+      }
     }
   }
 
