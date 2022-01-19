@@ -37,7 +37,7 @@ Napi::Array getFontsMetadata(const Napi::CallbackInfo &info) {
       CFURLRef url = (CFURLRef)CTFontDescriptorCopyAttribute(fontRef, kCTFontURLAttribute);
       NSString *fontPath = [NSString stringWithString:[(NSURL *)CFBridgingRelease(url) path]];
 
-      if ([@[ @"ttf", @"otf", @"ttc", @"dfont"] containsObject:[fontPath pathExtension]]) {
+      if ([@[ @"ttf", @"otf", @"ttc", @"dfont"] containsObject:[[fontPath pathExtension] lowercaseString]]) {
         int nsFontWeight = [[familyMember objectAtIndex:2] intValue];
         int weight = weightsMap[nsFontWeight];
         bool italic = [style containsString:@"Italic"];
