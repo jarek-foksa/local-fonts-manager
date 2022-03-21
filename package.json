@@ -5,7 +5,6 @@
   "dependencies": {
     "node-addon-api": "4.1.0"
   },
-  "bundleDependencies": false,
   "gypfile": true,
   "license": "MIT",
   "main": "index.js",
@@ -13,5 +12,18 @@
     "build": "node-gyp configure && node-gyp build",
     "rebuild": "node-gyp rebuild",
     "install": "node-gyp rebuild"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jarek-foksa/local-fonts-manager.git"
+  },
+  "keywords": [
+    "electron",
+    "fonts"
+  ],
+  "author": "Jarosław Foksa",
+  "bugs": {
+    "url": "https://github.com/jarek-foksa/local-fonts-manager/issues"
+  },
+  "homepage": "https://github.com/jarek-foksa/local-fonts-manager#readme"
 }
