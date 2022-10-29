@@ -1,6 +1,6 @@
 {
   "name": "local-fonts-manager",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "description": "Access local system fonts from Node.js and Electron",
   "dependencies": {
     "node-addon-api": "5.0.0"
@@ -9,9 +9,9 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "install": "node-gyp configure && node-gyp build && rm build/node_gyp_bins/python3",
-    "build":   "node-gyp configure && node-gyp build && rm build/node_gyp_bins/python3",
-    "rebuild": "node-gyp clean && node-gyp configure && node-gyp build && rm build/node_gyp_bins/python3"
+    "install": "node-gyp configure && node-gyp build && rm -rf build/node_gyp_bins",
+    "build":   "node-gyp configure && node-gyp build && rm -rf build/node_gyp_bins",
+    "rebuild": "node-gyp clean && node-gyp configure && node-gyp build && rm -rf build/node_gyp_bins"
   },
   "repository": {
     "type": "git",
