@@ -1,9 +1,9 @@
 {
   "name": "local-fonts-manager",
-  "version": "0.9.4",
+  "version": "0.9.5",
   "description": "Access local system fonts from Node.js and Electron",
   "dependencies": {
-    "node-addon-api": "5.0.0"
+    "node-addon-api": "7.0.0"
   },
   "gypfile": true,
   "license": "MIT",
